@@ -133,7 +133,12 @@ def get_genealogy_graph(center_uri: Optional[str] = None) -> Dict[str, Any]:
         direct_parents = {b['parent']['value'] for b in data.get('results', {}).get('bindings', []) if b['item']['value'] == center_uri}
         
         def get_attrs(nid):
-            return {'color': '#3b82f6', 'val': 3} if nid == center_uri else ({'color': '#22c55e', 'val': 2} if nid in direct_parents else {'color': '#64748b', 'val': 1})
+            if nid == center_uri:
+                return {'color': '#3b82f6', 'val': 3}
+            elif nid in direct_parents:
+                return {'color': '#22c55e', 'val': 2}
+            else:
+                return {'color': '#64748b', 'val': 1}
         
         for binding in data.get('results', {}).get('bindings', []):
             parent_id, item_id = binding['parent']['value'], binding['item']['value']
