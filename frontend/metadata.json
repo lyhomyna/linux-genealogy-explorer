@@ -1,0 +1,5 @@
+{
+  "name": "Linux Genealogy Explorer",
+  "description": "An interactive directory and genealogy visualizer for Linux distributions using Semantic Web technologies (Wikidata).",
+  "requestFramePermissions": []
+}
